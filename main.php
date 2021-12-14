@@ -43,6 +43,10 @@
 
     
     
+<<<<<<< Updated upstream
+=======
+    echo "Il existe ".$valide." échanges valides pour ".$nonValide." échanges non valides";
+>>>>>>> Stashed changes
 
 
     
