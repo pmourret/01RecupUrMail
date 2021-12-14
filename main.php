@@ -10,27 +10,36 @@
         $infos = infoBMail($connexion);
         $entete = accesEntete($connexion, $infos);
     }
-
-    afficheTab($entete);
+    //*********Déclaration variables**************/
+    
+    $valide = 0;
+    $nonValide = 0;
     $dateIn= stockDate($entete);
-    afficheTab($dateIn);
     $dateOut = stockUdate($entete);
-    afficheTab($dateOut);
 
-    //$dateConv = strtotime($dates[2]);
-    //echo "$dateConv";
+    /*************** Affichage *******************/
+    
+    //afficheTab($entete);
+    //afficheTab($dateIn);
+    //afficheTab($dateOut);
+    echo "Nombre d'entrées dans le tableau entete : ".count($entete)."<br>";
+    echo "Nombre d'entrées dans le tableau dateIn : ".count($dateIn)."<br>";
+    echo "Nombre d'entrées dans le tableau dateOut : ".count($dateOut)."<br>";
 
-    /** Comparateur des dates **/
+    /******* Comparateur des dates ****************/
     $substract = array();
     for($i=0;$i<count($entete);$i++){ 
-        $substract[$i] = $dateIn[$i] - $dateOut[$i]; //remplissage du tableau substract
-    }
-
-    foreach($substract as $val){
-        if($val < 432000){
-            echo "il existe des mails valides"."<br>";
+        $substract[$i] = $dateOut[$i] - $dateIn[$i]; //remplissage du tableau substract
+        if($dateOut[$i] > $dateIn[$i]){
+            $valide+= 1;
+        }
+        else{
+            $nonValide+= 1;
         }
     }
+    
+    echo "Il existe ".$valide." échanges valides pour "."$nonValide"." échanges non valides";
+
 
     
 
