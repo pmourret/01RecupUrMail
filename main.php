@@ -31,7 +31,7 @@
         echo "Il existe ".$valide." échanges valides pour "."$nonValide"." échanges non valide(s)";
     }
 
-    /*************** Affichage *******************/
+    /*************** Affichage (test) *******************/
     
     //afficheTab($entete);
     //afficheTab($dateIn);
