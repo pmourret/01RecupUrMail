@@ -40,7 +40,7 @@
     echo "Nombre d'entrées dans le tableau dateIn : ".count($dateIn)."<br>";
     echo "Nombre d'entrées dans le tableau dateOut : ".count($dateOut)."<br>";
 
-
+ 
     
     
 
