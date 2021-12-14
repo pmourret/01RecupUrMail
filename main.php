@@ -1,5 +1,5 @@
 <?php 
-    include_once 'fonctionsII.php';
+    include_once 'fonction.php';
 
     $connexion = connexion();
     if(!$connexion){
