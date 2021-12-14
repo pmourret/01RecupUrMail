@@ -32,4 +32,6 @@
         }
     }
 
+    echo "test Github";
+
 ?>
