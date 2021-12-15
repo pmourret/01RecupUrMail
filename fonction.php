@@ -71,24 +71,24 @@
             echo "</pre>";
         }
     }
-    /************************************************************* Zone de test **************************************************************/
 
+    
+    /************************************************************* Zone de test **************************************************************/
+    
     /************* Fonction récupération mails sortants **********/
     /************************************************************/
     function getSentMail(){
-        $user = 'test1234zebi@gmail.com';//$_GET['email'];
-        $motDePasse = 'test1234test1234';//$_GET['pass'];
-        $imapPath= '{imap.gmail.com:993/ssl}[Gmail]/Messages envoy&AOk-s'; // path récupéré via getMailList - la langue de la boite mail est a prendre en compte
-        $connectMail = imap_open($imapPath, $user, $motDePasse);
-        $mailBoxInfos = imap_check($connectMail);
-        $mailList = imap_fetch_overview($connectMail,"1:{$mailBoxInfos->Nmsgs}",0);
-        $tabMailSent=array();
-        for($i = 0; $i < count($mailList); $i++){
-            foreach($mailList as $element){
-                $tabMailSent[$i] = ($element->date);
-                //echo $tabMailSent[$i]."<br/>\n";
+            $user = 'test1234zebi@gmail.com';//$_GET['email'];
+            $motDePasse = 'test1234test1234';//$_GET['pass'];
+            $imapPath= '{imap.gmail.com:993/ssl}[Gmail]/Messages envoy&AOk-s'; // path récupéré via getMailList - la langue de la boite mail est a prendre en compte
+            $connectMail = imap_open($imapPath, $user, $motDePasse);
+            $mailBoxInfos = imap_check($connectMail);
+            $mailList = imap_fetch_overview($connectMail,"1:{$mailBoxInfos->Nmsgs}",0);
+            $tabMailSent=array();
+            for($i = 0; $i < count($mailList); $i++){    
+                $tabMailSent[$i] = strtotime($mailList[$i]->date);
+                //echo "function getsentmail : "."$i=".$i." // ".$tabMailSent[$i]."<br/>\n"; 
             }
+            return $tabMailSent;
         }
-        return $tabMailSent;
-    }
 ?>

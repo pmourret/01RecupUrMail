@@ -30,17 +30,34 @@
 
     /******* Comparateur des dates ****************/
     $substract = array();
-    for($i=0;$i<count($entete);$i++){ 
-        $substract[$i] = $dateOut[$i] - $dateIn[$i]; //remplissage du tableau substract
-        if($dateOut[$i] > $dateIn[$i]){
-            $valide+= 1;
+
+    if(count($dateIn)>count($dateOut)){
+        for($i=0;$i<count($dateOut);$i++){ 
+            //echo "substract[".$i."] : ".$substract[$i]." // "."dateOut[".$i."] : ".$dateOut[$i]." // "."dateIn[".$i."] : ".$dateIn[$i]."<br/>\n";
+            $substract[$i] = $dateOut[$i] - $dateIn[$i]; //remplissage du tableau substract
+            if($dateOut[$i] > $dateIn[$i]){
+                $valide+= 1;
+            }
+            else{
+                $nonValide+= 1;
+            }
         }
-        else{
-            $nonValide+= 1;
-        }
+    }else{
+        for($i=0;$i<count($dateIn);$i++){ 
+            $substract[$i] = $dateOut[$i] - $dateIn[$i]; //remplissage du tableau substract
+            if($dateOut[$i] > $dateIn[$i]){
+                $valide+= 1;
+            }
+            else{
+                $nonValide+= 1;
+            }
+        }    
     }
+
+    
     
     echo "Il existe ".$valide." échanges valides pour ".$nonValide." échanges non valides";
+    
 
 
     
