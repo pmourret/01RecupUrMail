@@ -23,6 +23,6 @@
             print_r($sortSent);
         echo "</pre>";
     }
-
+    
     closeMbox($mbox,$mbox_sent);
 ?>
