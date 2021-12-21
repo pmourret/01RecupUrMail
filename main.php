@@ -8,7 +8,7 @@
         die("Connexion impossible, vérifier vos identifiants");
     }
     else {
-        echo "Connexion réussie";
+        //echo "Connexion réussie<br/>";
 
         $checkBox = checkBox($mbox);
         $checkBoxSent = checkBoxSend($mboxSent);
@@ -18,10 +18,7 @@
 
         $sortReceived = sortReceived($mbox,$mboxOverview);
         $sortSent = sortSent($mboxSent,$mboxOverviewSent,$sortReceived);
-        echo "<pre>";
-            print_r($sortReceived);
-            print_r($sortSent);
-        echo "</pre>";
+
     }
     
     closeMbox($mbox,$mboxSent);

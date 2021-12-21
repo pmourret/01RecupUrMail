@@ -41,7 +41,7 @@
                 $bus[1] = strtotime(htmlentities($element->date));
                 $bus[2] = htmlentities($element->msgno);
                 $inboxTab[$nb] = $bus;
-                //echo "<br/>\nSTOCKED IN ARRAY AS : inbox_tab[".$nb."] =>".$inbox_tab[$nb][0]." - ".$inbox_tab[$nb][1]." - ".$inbox_tab[$nb][2];
+                //echo "<br/>\nSTOCKED IN ARRAY AS : inboxTab[".$nb."] => ".$inboxTab[$nb][0]." - ".$inboxTab[$nb][1]." - ".$inboxTab[$nb][2];
                 $nb=$nb+1;
                 $bus = array();
             }
@@ -62,6 +62,7 @@
                 for($i=0;$i<$countAnswered;$i++){
                     if($inboxTab[$i][0]==htmlentities($element->in_reply_to)){
 
+                        echo "<p><u>MATCH FOUND : </u></p>" ;
                         $delay = strtotime($element->date) - $inboxTab[$i][1];
                         $bus[0] = $inboxTab[$i][2];
                         $bus[1]=$delay;
@@ -74,8 +75,23 @@
                         }else{
                             $bus[2] = false;
                         }
-
-                        $tabMatches[$i] = $bus ;
+                        $inboxTab[$i] =$bus ;
+                        if($inboxTab[$i][2]== false) {
+                            echo '<br/><br/>DATA STORED IN ARRAY AS $tabMatches['.$i.'] : inbox message number= '
+                            .$inboxTab[$i][0].', delay = '
+                            .$inboxTab[$i][1]
+                            .', is mail valid = NONE ';
+                            //.$inboxTab[$i][2];
+                        }
+                        else {
+                            echo '<br/><br/>DATA STORED IN ARRAY AS $tabMatches['.$i.'] : inbox message number= '
+                            .$inboxTab[$i][0].', delay = '
+                            .$inboxTab[$i][1]
+                            .', is mail valid= YES ';
+                            //.$inboxTab[$i][2];
+                        }
+                        
+                        //$tabMatches[$i] = $bus ;
                         $bus= array();
                     }
                 }
