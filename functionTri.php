@@ -1,10 +1,13 @@
 <?php
     include_once 'getOpenDays.php';
+
     function sortMails($connexion,$connexionSent,$mboxOverview, $mboxOverviewSent){
 
     $inboxTab=array();
     $bus=array();
     $nb=0;
+    $cptFalse=0;
+    $cptTrue=0;
 
     foreach($mboxOverview as $element){
         $headerInfoInbox = imap_headerinfo($connexion, $element->msgno);
@@ -63,9 +66,11 @@
                     echo '<br/><br/>Il y a '.$nbOpenDays.' jours ouvr&eacute;s entre le '.date('d/m/Y', $startDay).' et le '.date('d/m/Y', $endDay);
                     if($nbOpenDays<=5){
                         $bus[2]=true;
+                        $cptTrue = $cptTrue + 1;
                     }
                     if($nbOpenDays>5){
                         $bus[2]=false;
+                        $cptFalse = $cptFalse + 1;
                     }
                     $tabMatches[$nbTabMatches]=$bus;
                     if($inboxTab[$i][2]== false) {
@@ -86,9 +91,12 @@
                     $nbTabMatches=$nbTabMatches+1;
             }
         }
+
     }
    echo "</pre><br/>\n"; 
 }
+    echo "Messages validés = "."$cptTrue"."<br/>";
+    echo "Messages non validés = "."$cptFalse"."<br/>";
     return $tabMatches;
 }
 
