@@ -1,83 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Simple login form</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <style>
-      html, body {
-      display: flex;
-      justify-content: center;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 15px;
-      }
-      form {
-      border: 5px solid #f1f1f1;
-      }
-      input[type=text], input[type=password] {
-      width: 100%;
-      padding: 16px 8px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      }
-      button {
-      background-color: #8ebf42;
-      color: white;
-      padding: 14px 0;
-      margin: 10px 0;
-      border: none;
-      cursor: grabbing;
-      width: 100%;
-      }
-      h1 {
-      text-align:center;
-      font-size:18;
-      }
-      button:hover {
-      opacity: 0.8;
-      }
-      .formcontainer {
-      text-align: left;
-      margin: 24px 50px 12px;
-      }
-      .container {
-      padding: 16px 0;
-      text-align:left;
-      }
-      span.psw {
-      float: right;
-      padding-top: 0;
-      padding-right: 15px;
-      }
-      /* Change styles for span on extra small screens */
-      @media screen and (max-width: 300px) {
-      span.psw {
-      display: block;
-      float: none;
-      }
-    </style>
-  </head>
-  
-  <body>
-    <form action="final.php">
-      <h1>Connexion</h1>
-      <div class="formcontainer">
-      <hr/>
-      <div class="container">
-        <label for="uname"><strong>Adresse mail :</strong></label>
-        <input type="text" placeholder="Enter Username" name="email" required>
-        <label for="psw"><strong>Mot de passe : </strong></label>
-        <input type="password" placeholder="Enter Password" name="pass" required>
-      </div>
-      <button type="submit">Login</button>
-      <div class="container" style="background-color: #eee">
-        <label style="padding-left: 15px">
-        <input type="checkbox"  checked="checked" name="remember"> Remember me
-        </label>
-        <span class="psw"><a href="#"> Forgot password?</a></span>
-      </div>
-    </form>
-  </body>
-  
+<head>
+	<meta charset="utf-8" />
+	<title>CSN Mail Validation - Formoid form html</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="blurBg-false" style="background-color:#d6d6d6">
+
+
+
+<!-- Start Formoid form-->
+<link rel="stylesheet" href="formoid_files/formoid1/formoid-solid-blue.css" type="text/css" />
+<script type="text/javascript" src="formoid_files/formoid1/jquery.min.js"></script>
+<form class="formoid-solid-blue" style="background-color:#FFFFFF;font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;max-width:480px;min-width:150px" method="post" action="main.php">
+	<div class="title">
+		<h2>CSN Mail Validation</h2>
+	</div>
+	<div class="element-multiple"><label class="title">
+		<span class="required"></span>
+	</label>
+	<div class="item-cont">
+		<div class="large">
+			<select data-no-selected="Type de serveur" name="serveur" required="required">
+				<option selected value="{outlook.office365.com:993/imap/ssl/novalidate-cert}">Boite Outlook</option>
+				<option value="{imap.gmail.com:993/imap/ssl}">---Not Implemented---</option>
+			</select>
+			<span class="icon-place"></span>
+		</div>
+	</div>
+	</div>
+	<div class="element-email">
+		<label class="title"></label>
+		<div class="item-cont">
+			<input class="large" type="email" name="username" value="" placeholder="Email"/>
+			<span class="icon-place"></span>
+		</div>
+	</div>
+	<div class="element-password">
+		<label class="title"></label>
+		<div class="item-cont">
+			<input class="large" type="password" name="password" value="" placeholder="Password"/>
+			<span class="icon-place"></span>
+		</div>
+	</div>
+<div class="submit">
+	<input type="submit" value="Submit"/>
+</div>
+</form>
+<p class="frmd">
+	<a href="http://formoid.com/v29.php">form html</a> Formoid.com 2.9</p>
+	<script type="text/javascript" src="formoid_files/formoid1/formoid-solid-blue.js"></script>
+<!-- Stop Formoid form-->
+
+
+
+</body>
 </html>
