@@ -2,17 +2,16 @@
     include_once 'getOpenDays.php';
     function connectBox(){
 
-        $mboxPath = '{imap.gmail.com:993/imap/ssl}';
-        $username = 'test1234zebi@gmail.com';
-        $password = 'test1234test1234'; 
-
+        $mboxPath = '{outlook.office365.com:993/imap/ssl/novalidate-cert}Inbox';
+        $username='testproj1234@outlook.fr';
+        $password='test1234test1234';
         return $connexion = imap_open($mboxPath, $username, $password);
     }
 
     function connectBoxSent(){
-        $mboxPathSend = '{imap.gmail.com:993/ssl}[Gmail]/Messages envoy&AOk-s';
-        $username = 'test1234zebi@gmail.com';
-        $password = 'test1234test1234';
+        $mboxPathSend = '{outlook.office365.com:993/imap/ssl/novalidate-cert}Sent';
+        $username='testproj1234@outlook.fr';
+        $password='test1234test1234';
 
         return $connexionSent = imap_open($mboxPathSend, $username, $password);
     }
@@ -29,7 +28,7 @@
         return $mboxOverview = imap_fetch_overview($connexion, "1:".$mboxChecked->Nmsgs);
     }
 
-    function sortReceived($connexion, $mboxOverview){
+    /*function sortReceived($connexion, $mboxOverview){
         $inboxTab = array();
         $bus = array();
         $nb = 0;
@@ -100,6 +99,7 @@
 
         return $tabMatches;
     }
+    */
 
     function closeMbox($connexion, $connexionSent){
         imap_close($connexion);

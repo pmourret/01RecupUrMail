@@ -1,5 +1,6 @@
 <?php 
     include_once 'functions.php';
+    include_once 'functionTri.php';
 
     $mbox = connectBox();
     $mboxSent = connectBoxSent();
@@ -16,8 +17,10 @@
         $mboxOverview = overviewBox($mbox,$checkBox);
         $mboxOverviewSent = overviewBox($mboxSent,$checkBoxSent);
 
-        $sortReceived = sortReceived($mbox,$mboxOverview);
-        $sortSent = sortSent($mboxSent,$mboxOverviewSent,$sortReceived);
+        $sortedMails = sortMails($mbox,$mboxSent,$mboxOverview,$mboxOverviewSent);
+
+        print_r($sortedMails);
+
     }
     
     closeMbox($mbox,$mboxSent);
