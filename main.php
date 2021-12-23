@@ -1,6 +1,7 @@
 <?php 
     include_once 'functions.php';
     include_once 'functionTri.php';
+    include_once 'accueil/Accueil.php'; 
 
 
     $path = checkPath();
@@ -21,7 +22,7 @@
         $mboxOverviewSent = overviewBox($mboxSent,$checkBoxSent);
 
         $sortedMails = sortMails($mbox,$mboxSent,$mboxOverview,$mboxOverviewSent);
-        header('Location: accueil/Accueil.php');
+        
         //print_r($sortedMails);
 
     }
