@@ -56,17 +56,17 @@
                     }
                     $tabMatches[$nbTabMatches]=$bus;
                     if($inboxTab[$i][2]== false) {
-                        //echo '<br/><br/>DATA STORED IN ARRAY AS $tabMatches['.$i.'] : inbox message number= '
-                        //.$inboxTab[$i][0].', delay = '
-                        //.$inboxTab[$i][1]
-                        //.', is mail valid = NONE ';
+                        echo '<br/><br/>DATA STORED IN ARRAY AS $tabMatches['.$i.'] : inbox message number= '
+                        .$inboxTab[$i][0].', delay = '
+                        .$inboxTab[$i][1]
+                        .', is mail valid = NONE ';
                         //.$inboxTab[$i][2];
                     }
                     else {
-                        //echo '<br/><br/>DATA STORED IN ARRAY AS $tabMatches['.$i.'] : inbox message number= '
-                        //.$inboxTab[$i][0].', delay = '
-                        //.$inboxTab[$i][1]
-                        //.', is mail valid= YES ';
+                        echo '<br/><br/>DATA STORED IN ARRAY AS $tabMatches['.$i.'] : inbox message number= '
+                        .$inboxTab[$i][0].', delay = '
+                        .$inboxTab[$i][1]
+                        .', is mail valid= YES ';
                         //.$inboxTab[$i][2];
                     }
                     $bus=array();

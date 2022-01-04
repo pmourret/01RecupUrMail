@@ -1,7 +1,7 @@
 <?php 
     include_once 'functions.php';
-    include_once 'functionTri.php';
-    include_once 'accueil/Accueil.php'; 
+    //include_once 'functionTri.php';
+    include_once 'functionsII.php';
 
 
     $path = checkPath();
@@ -13,7 +13,6 @@
         die("Connexion impossible, vérifier vos identifiants");
     }
     else {
-        //echo "Connexion réussie<br/>";
 
         $checkBox = checkBox($mbox);
         $checkBoxSent = checkBoxSend($mboxSent);
@@ -21,10 +20,17 @@
         $mboxOverview = overviewBox($mbox,$checkBox);
         $mboxOverviewSent = overviewBox($mboxSent,$checkBoxSent);
 
-        $sortedMails = sortMails($mbox,$mboxSent,$mboxOverview,$mboxOverviewSent);
-        
-        //print_r($sortedMails);
+        //$checkHeaders = checkMailHeaders($mboxOverview);
+        //$checkHeadersSent = checkMailHeaders($mboxOverview);
 
+        $inboxTab  = checkMailHeaders($mboxOverview);
+        $inboxTabSent = checkMailHeaders($mboxOverviewSent);
+
+        $sortedMails = sortMails($mboxOverview, $inboxTab);
+        $sortedMailsSent = sortMails($mboxOverviewSent,$inboxTabSent);
+
+        echo count($sortedMails)."<br>";
+        echo count($sortedMailsSent);
     }
     
     closeMbox($mbox,$mboxSent);
