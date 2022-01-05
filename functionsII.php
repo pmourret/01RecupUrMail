@@ -15,6 +15,7 @@ function checkMailHeaders($mboxOverview){
             $bus[1] = strtotime(htmlentities($element->date));
             $bus[2] = htmlentities($element->msgno);
             $inboxTab[$index] = $bus;
+            $index+=1;
             $bus = array();
         }
     }
@@ -25,17 +26,16 @@ function checkMailHeaders($mboxOverview){
 function sortMails($mboxOverview, $inboxTab){
 
     $bus = array();
-    $inboxTab = array();
+    //$inboxTab = array();
     $index = 0;
     $tabMatches = array();
 
     foreach($mboxOverview as $element){
-        if(isset($element->in_reply_to)){
+        if(isset($element->in_reply_to)){ //Rentre dans le if() 
             for($i = 0 ; $i < count($inboxTab); $i++){
-                if($inboxTab[$i][0]==htmlentities($element->in_reply_to)){
-                    $delay = strtotime($element->date);
+                if($inboxTab[$i][0]==htmlentities($element->in_reply_to)){ //Ne rentre pas dans le if ;
                     $bus[0]=$inboxTab[$i][2];
-                    $bus[1]=$delay;
+                    $bus[1]=strtotime($element->date);
                     $startDay=$inboxTab[$i][1];
                     $endDay=strtotime($element->date);
                     $nbOpenDays=getOpenDays($startDay,$endDay);

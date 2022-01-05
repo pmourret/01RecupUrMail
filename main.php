@@ -15,22 +15,22 @@
     else {
 
         $checkBox = checkBox($mbox);
-        $checkBoxSent = checkBoxSend($mboxSent);
+        $checkBoxSent = checkBox($mboxSent);
 
         $mboxOverview = overviewBox($mbox,$checkBox);
         $mboxOverviewSent = overviewBox($mboxSent,$checkBoxSent);
 
-        //$checkHeaders = checkMailHeaders($mboxOverview);
-        //$checkHeadersSent = checkMailHeaders($mboxOverview);
-
         $inboxTab  = checkMailHeaders($mboxOverview);
-        $inboxTabSent = checkMailHeaders($mboxOverviewSent);
+        
+        /*echo "<pre>";
+            print_r($inboxTab);
+        echo "</pre>";*/
+        
+        $sortedMailsSent = sortMails($mboxOverviewSent,$inboxTab);
 
-        $sortedMails = sortMails($mboxOverview, $inboxTab);
-        $sortedMailsSent = sortMails($mboxOverviewSent,$inboxTabSent);
-
-        echo count($sortedMails)."<br>";
-        echo count($sortedMailsSent);
+        /*echo "<pre>";
+            print_r($sortedMailsSent);
+        echo "</pre>";*/
     }
     
     closeMbox($mbox,$mboxSent);

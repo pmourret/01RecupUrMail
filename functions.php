@@ -64,10 +64,6 @@
         return imap_check($connexion);
     }
 
-    function checkBoxSend($connexionSent){
-        return imap_check($connexionSent);
-    }
-
     function overviewBox($connexion, $mboxChecked){
         return imap_fetch_overview($connexion, "1:".$mboxChecked->Nmsgs);
     }
