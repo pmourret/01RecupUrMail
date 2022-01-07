@@ -6,17 +6,13 @@
         $imapOutlook = '{outlook.office365.com:993/imap/ssl/novalidate-cert}';
         
         $imapGoogleIn = '{imap.gmail.com:993/ssl}INBOX';
-        //$imapGoogleSent = '{imap.gmail.com:993/ssl}[Gmail]/Messages envoy&AOk-s';
         $imapOutlookIn = '{outlook.office365.com:993/imap/ssl/novalidate-cert}Inbox';
-        //$imapOutlookSent = '{outlook.office365.com:993/imap/ssl/novalidate-cert}Sent';
 
         if ($_POST['serveur'] == $imapGoogle){
             $mboxPath = $imapGoogleIn;
-            //$mboxPathSend = $imapGoogleSent ;
         }
         else if ($_POST['serveur'] == $imapOutlook){
             $mboxPath = $imapOutlookIn ;
-            //$mboxPathSend = $imapOutlookSent;
         }
         else{
             echo "Type de boîte mail non supporté";
@@ -42,6 +38,24 @@
             echo "Type de boîte mail non supporté";
         }
         return $mboxPathSend ;
+    }
+
+    function connectBoxAdmin(){
+        if($_POST['username'] == 'admin' && $_POST['password'] == 'admin'){
+            $mboxPath = '{outlook.office365.com:993/imap/ssl/novalidate-cert}';
+            $mbox = 'testproj1234@outlook.fr';
+            $password = "test1234test1234";
+        }
+        return imap_open($mboxPath, $mbox, $password);
+    }
+
+    function connectBoxSentAdmin(){
+        if($_POST['username'] == 'admin' && $_POST['password'] == 'admin'){
+            $mboxPathSent = '{outlook.office365.com:993/imap/ssl/novalidate-cert}Sent';
+            $mbox = 'testproj1234@outlook.fr';
+            $password = "test1234test1234";
+        }
+        return imap_open($mboxPathSent, $mbox, $password);
     }
 
     function connectBox($mboxServer){

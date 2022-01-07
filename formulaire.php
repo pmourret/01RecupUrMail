@@ -37,7 +37,7 @@
           <div class="u-form-group u-form-select u-form-group-4">
               <label for="select-5839" class="u-form-control-hidden u-label"></label>
               <div class="u-form-select-wrapper">
-                <select id="select-5839" name="select" class="u-grey-5 u-input u-input-rectangle u-input-3">
+                <select id="select-5839" name="serveur" class="u-grey-5 u-input u-input-rectangle u-input-3">
                   <option value="{outlook.office365.com:993/imap/ssl/novalidate-cert}">Boite Outlook</option>
                 </select>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
