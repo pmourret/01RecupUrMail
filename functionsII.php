@@ -4,7 +4,7 @@ include_once 'getOpenDays.php';
  * renvoie un tableau 2D, contenant dans chaque cellule
  * array('message_id', 'date', 'msgno')
  */
-function checkMailHeaders($mboxOverview){
+function sortMailsReceived($mboxOverview){
     $bus = array();
     $inboxTab = array();
     $index = 0;
@@ -23,19 +23,19 @@ function checkMailHeaders($mboxOverview){
     return $inboxTab;
 }
 
-function sortMails($mboxOverview, $inboxTab){
+function sortMailsSent($mboxOverview, $inboxTab){
 
-    $bus = array();
-    //$inboxTab = array();
     $index = 0;
     $tabMatches = array();
 
     foreach($mboxOverview as $element){
-        if(isset($element->in_reply_to)){ //Rentre dans le if() 
+        if(isset($element->in_reply_to)){ 
             for($i = 0 ; $i < count($inboxTab); $i++){
-                if($inboxTab[$i][0]==htmlentities($element->in_reply_to)){ //Ne rentre pas dans le if ;
+                if($inboxTab[$i][0]==htmlentities($element->in_reply_to)){ 
+                    $bus = array();
+                    $delay= strtotime($element->date) - $inboxTab[$i][1];
                     $bus[0]=$inboxTab[$i][2];
-                    $bus[1]=strtotime($element->date);
+                    $bus[1]=$delay;
                     $startDay=$inboxTab[$i][1];
                     $endDay=strtotime($element->date);
                     $nbOpenDays=getOpenDays($startDay,$endDay);
@@ -43,10 +43,9 @@ function sortMails($mboxOverview, $inboxTab){
                         $bus[2]=true;
                     }
                     if($nbOpenDays>5){
-                        $bus[2]=false;
+                        $bus[2]=0;
                     }
                     $tabMatches[$index] = $bus;
-                    $bus = array();
                     $index+=1;
                 }
             }
@@ -55,7 +54,17 @@ function sortMails($mboxOverview, $inboxTab){
     return $tabMatches;
 }
 
-function countMail(){
+function countMailTrue($tabMatches){
+    $cptTrue = 0;
 
+    foreach($tabMatches as $element){
+        for($i = 0 ; $i < count($tabMatches);$i++){
+            if($element[2] == true){
+                $cptTrue+=1;
+            }
+        }
+    }
+    return $cptTrue ;
 }
+
 ?>

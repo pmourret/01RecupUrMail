@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include_once 'functions.php';
     //include_once 'functionTri.php';
     include_once 'functionsII.php';
@@ -10,7 +11,7 @@
     $mboxSent = connectBoxSent($pathSent);
 
     if (!$mbox && !$mboxSent){
-        die("Connexion impossible, vérifier vos identifiants");
+        die("Connexion impossible, vérifiez vos identifiants");
     }
     else {
 
@@ -20,17 +21,22 @@
         $mboxOverview = overviewBox($mbox,$checkBox);
         $mboxOverviewSent = overviewBox($mboxSent,$checkBoxSent);
 
-        $inboxTab  = checkMailHeaders($mboxOverview);
+        $sortedMailsReceived  = sortMailsReceived($mboxOverview);
         
-        /*echo "<pre>";
-            print_r($inboxTab);
-        echo "</pre>";*/
-        
-        $sortedMailsSent = sortMails($mboxOverviewSent,$inboxTab);
+        $sortedMailsSent = sortMailsSent($mboxOverviewSent,$sortedMailsReceived);
 
-        /*echo "<pre>";
-            print_r($sortedMailsSent);
-        echo "</pre>";*/
+        $cptMailReceived = count($mboxOverview); 
+        $cptmailSent = count($mboxOverviewSent);
+        $cptMailChecked = $cptMailReceived + $cptmailSent ;
+        
+        $cptTrue = countMailTrue($sortedMailsSent) ;
+        $cptFalse = $cptMailChecked - $cptTrue ;
+
+        $_SESSION['nbMails'] = $cptMailChecked;
+        $_SESSION['mailTrue'] = $cptTrue;
+        $_SESSION['mailFalse'] = $cptFalse;
+
+        header("Location:html/Accueil.php");
     }
     
     closeMbox($mbox,$mboxSent);
