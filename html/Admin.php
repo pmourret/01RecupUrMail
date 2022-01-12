@@ -29,7 +29,7 @@
     <meta property="og:type" content="website">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-b571"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="430" data-image-height="380">
+        <a href="../formulaire.php" class="u-image u-logo u-image-1" data-image-width="430" data-image-height="380">
           <img src="images/20210409091953.png" class="u-logo-image u-logo-image-1">
         </a>
       </div></header>
@@ -43,10 +43,10 @@
             <div class="u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-1">
                 <span class="u-file-icon u-icon u-icon-rectangle u-icon-1">
-                  <a href="null"> <img src="images/138028.png" alt=""></a>
+                  <a href="#"> <img id="delay" src="images/500811.png" alt=""></a>	
                 </span>
-                <h3 class="u-align-center u-text u-text-default u-text-3">Base de Donnée</h3>
-                <p class="u-align-center u-text u-text-default u-text-4">Accès aux information de la BDD</p>
+                <h3 class="u-align-center u-text u-text-default u-text-3">Modifier Traitement</h3>
+                <p class="u-align-center u-text u-text-default u-text-4">Modification du délai de traitement.</p>
               </div>
             </div>
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
@@ -61,7 +61,7 @@
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-3">
                 <span class="u-file-icon u-icon u-icon-rectangle u-icon-3">
-                  <a href="null"> <img src="images/266134.png" alt=""> </a>
+                  <a href="Gestion.php"> <img src="images/266134.png" alt=""> </a>
                 </span>
                 <h3 class="u-align-center u-text u-text-default u-text-7">Gestion des agents</h3>
                 <p class="u-align-center u-text u-text-default u-text-8">Ajouter, modifier, supprimer un agent.</p>
@@ -101,13 +101,16 @@
 		l-3.572,3.571c-1.148,1.148-1.476,2.794-0.854,4.294c0.621,1.5,2.016,2.432,3.64,2.432h5.052C51.65,23,52,23.35,52,23.78V30.22z"></path><path d="M27,18c-4.963,0-9,4.037-9,9s4.037,9,9,9s9-4.037,9-9S31.963,18,27,18z M27,34c-3.859,0-7-3.141-7-7s3.141-7,7-7
 		s7,3.141,7,7S30.859,34,27,34z"></path>
 </g></svg></span>
-                <h3 class="u-text u-text-1">Mails traités :&nbsp;&nbsp;</h3>
+                <h3 class="u-text u-text-1">Mails dans la boîte :&nbsp;&nbsp;</h3>
                 <p class="u-text u-text-2"><?php echo $_SESSION['nbMails'] ?>
                 </p>
               </div>
             </div>
             <div class="u-align-center u-container-style u-list-item u-repeater-item">
-              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2"><span class="u-file-icon u-icon u-icon-circle u-icon-2"><img src="images/1004765.png" alt=""></span>
+              <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                <span class="u-file-icon u-icon u-icon-circle u-icon-2">
+                  <a href="mailTrue.php"><img src="images/1004765.png" alt=""></a>
+                </span>
                 <h3 class="u-text u-text-3">Mails répondus :&nbsp;</h3>
                 <p class="u-text u-text-4"> <?php echo $_SESSION['mailTrue'] ?><br>
                 </p>
@@ -134,7 +137,7 @@
             </div>
           </div>
         </div>
-        <a href="https://nicepage.site" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">TELECHARGER</a>
+        <a href="NULL" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">TELECHARGER</a>
       </div>
     </section>
   </body>

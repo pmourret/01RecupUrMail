@@ -9,7 +9,7 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Accueil</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Accueil.css" media="screen">
+    <link rel="stylesheet" href="Accueil.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 4.2.6, nicepage.com">
@@ -28,7 +28,7 @@
     <meta property="og:type" content="website">
   </head>
   <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-b571"><div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="430" data-image-height="380">
+        <a href="../formulaire.php" class="u-image u-logo u-image-1" data-image-width="430" data-image-height="380">
           <img src="images/20210409091953.png" class="u-logo-image u-logo-image-1">
         </a>
       </div></header>
@@ -90,12 +90,13 @@
           <div class="u-repeater u-repeater-1">
             <div class="u-container-style u-list-item u-repeater-item u-list-item-1">
               <div class="u-container-layout u-similar-container u-container-layout-1"><span class="u-file-icon u-icon u-icon-circle u-icon-1"><img src="images/54993.png" alt=""></span>
-                <h3 class="u-align-center u-text u-text-1">Téléchargement au format CSV</h3>
+                <a href="null" style="color:black"><h3 class="u-align-center u-text u-text-1">Téléchargement au format CSV</h3></a>
+                <!--<a href="null" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">TELECHARGER</a>-->
               </div>
             </div>
           </div>
         </div>
-        <a href="https://nicepage.site" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">TELECHARGER</a>
+
       </div>
     </section>
   </body>

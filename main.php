@@ -1,10 +1,15 @@
 <?php 
     session_start();
-    include_once 'functions.php';
-    //include_once 'functionTri.php';
-    include_once 'functionsII.php';
+    include_once 'library/functions.php';
 
-    if($_POST['username'] == 'admin' && $_POST['password'] == 'admin'){
+    $conf = parse_ini_file('conf.ini');
+
+    $dbUser = $conf['dataBaseUser'];
+    $dbPass = $conf['dataBasePass'];
+    $appUser = $conf['login'] ;
+    $appPass = $conf['password'] ;
+
+    if($_POST['username'] == $appUser && $_POST['password'] == $appPass){
         $mbox = connectBoxAdmin();
         $mboxSent = connectBoxSentAdmin();
 
@@ -25,18 +30,33 @@
     
             $cptMailReceived = count($mboxOverview); 
             $cptmailSent = count($mboxOverviewSent);
-            $cptMailChecked = $cptMailReceived + $cptmailSent ;
-            
+            $cptMailChecked = $cptMailReceived + $cptmailSent;
+            /*
             $cptTrue = countMailTrue($sortedMailsSent) ;
             $cptFalse = $cptMailChecked - $cptTrue ;
             $perf = ($cptTrue / $cptMailChecked) * 100;
             $perfRound = number_format($perf,2);
+            */
+
+            $cptTrue = countMailTrue($sortedMailsSent);
+            $cptFalse = countMailFalse($sortedMailsSent);
+            $cptUnderFive = getOpenDaysMailReceived($mboxOverview);
+
+            $countTotal = $cptTrue + $cptUnderFive + $cptFalse ; 
+
+            $perf = ($cptTrue / $countTotal) * 100;
+            $perfRound = number_format($perf,2);
+
     
             $_SESSION['nbMails'] = $cptMailChecked;
-            $_SESSION['mailTrue'] = $cptTrue;
+            $_SESSION['mailTrue'] = $cptTrue + $cptUnderFive;
             $_SESSION['mailFalse'] = $cptFalse;
             $_SESSION['perf'] = $perfRound ;
+            stockageBdd($mbox,$mboxSent,$dbUser,$dbPass);
+
             header("Location:html/Admin.php");
+
+            
         }
     }
     else{
@@ -70,7 +90,8 @@
             $_SESSION['nbMails'] = $cptMailChecked;
             $_SESSION['mailTrue'] = $cptTrue;
             $_SESSION['mailFalse'] = $cptFalse;
-    
+
+            stockageBdd($mbox,$mboxSent,$dbUser,$dbPass);
             header("Location:html/Accueil.php");
         }
     }
