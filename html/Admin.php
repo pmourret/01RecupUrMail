@@ -43,7 +43,7 @@
             <div class="u-container-style u-list-item u-repeater-item">
               <div class="u-container-layout u-similar-container u-valign-bottom u-container-layout-1">
                 <span class="u-file-icon u-icon u-icon-rectangle u-icon-1">
-                  <a href="#"> <img id="delay" src="images/500811.png" alt=""></a>	
+                  <a href="modifyDelay.php"> <img id="delay" src="images/500811.png" alt=""></a>
                 </span>
                 <h3 class="u-align-center u-text u-text-default u-text-3">Modifier Traitement</h3>
                 <p class="u-align-center u-text u-text-default u-text-4">Modification du délai de traitement.</p>
@@ -101,7 +101,7 @@
 		l-3.572,3.571c-1.148,1.148-1.476,2.794-0.854,4.294c0.621,1.5,2.016,2.432,3.64,2.432h5.052C51.65,23,52,23.35,52,23.78V30.22z"></path><path d="M27,18c-4.963,0-9,4.037-9,9s4.037,9,9,9s9-4.037,9-9S31.963,18,27,18z M27,34c-3.859,0-7-3.141-7-7s3.141-7,7-7
 		s7,3.141,7,7S30.859,34,27,34z"></path>
 </g></svg></span>
-                <h3 class="u-text u-text-1">Mails dans la boîte :&nbsp;&nbsp;</h3>
+                <h3 class="u-text u-text-1">Mails reçus :&nbsp;&nbsp;</h3>
                 <p class="u-text u-text-2"><?php echo $_SESSION['nbMails'] ?>
                 </p>
               </div>
@@ -137,7 +137,7 @@
             </div>
           </div>
         </div>
-        <a href="NULL" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">TELECHARGER</a>
+          <a href="../library/toCSV.php" class="u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1">TELECHARGER</a>
       </div>
     </section>
   </body>

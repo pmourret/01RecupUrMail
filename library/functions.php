@@ -1,4 +1,9 @@
 <?php
+    function getDelay(){
+        $ini = parse_ini_file("config.ini")  ;
+        $delay = (int)$ini['delay'];
+        return $delay;
+    }
     /********************** Fonction de comptage des jours ouvrés ************************/
     function getOpenDays($date_start, $date_stop) {
         $arr_bank_holidays = array(); // Tableau des jours feriés
@@ -136,7 +141,7 @@
     }
 
     function sortMailsSent($mboxOverview, $inboxTab){
-
+        $delay = getDelay();
         $index = 0;
         $tabMatches = array();
     
@@ -151,10 +156,10 @@
                         $startDay=$inboxTab[$i][1];
                         $endDay=strtotime($element->date);
                         $nbOpenDays=getOpenDays($startDay,$endDay);
-                        if($nbOpenDays<=5){
+                        if($nbOpenDays <= $delay){
                             $bus[2]=1;
                         }
-                        if($nbOpenDays>5){
+                        if($nbOpenDays > $delay){
                             $bus[2]=0;
                         }
                         $tabMatches[$index] = $bus;
@@ -167,12 +172,13 @@
     }
 
     function getOpenDaysMailReceived($mboxOverview){
+        $getDelay = getDelay();
         $cptUnderFive=0;
         foreach($mboxOverview as $element){
             $endDay=time();
             $startDay=strtotime($element->date);
             $nbOpenDays=getOpenDays($startDay,$endDay);
-            if(($nbOpenDays<=5) && ($element->answered != "A")){
+            if(($nbOpenDays <= $getDelay) && ($element->answered != "A")){
                 $cptUnderFive+=1;
             }
         }
@@ -215,7 +221,7 @@
 
     function stockageBdd($conImapInbox,$conImapSent,$loginBdd,$mdpBdd){
         //recup liste des uid mails recus bdd
-        $ini = parse_ini_file('conf.ini');
+        $ini = parse_ini_file('library/config.ini');
         $tableName="email_received";
         $tableNameSent="email_sent";
         try{
@@ -363,5 +369,6 @@
         imap_close($connexion);
         imap_close($connexionSent);
     }
+
 
 ?>

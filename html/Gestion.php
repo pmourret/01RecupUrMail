@@ -1,6 +1,6 @@
 <?php 
   session_start();
-  include_once "../library/modfAgents.php"
+include_once "../library/AgentUpdater/modfAgents.php"
 ?>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
@@ -40,7 +40,7 @@
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-text u-text-default u-text-1">Ajout d'un agent</h2>
         <div class="u-expanded-width u-form u-form-1">
-          <form action="../library/addAgent.php" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
+          <form action="../library/AgentUpdater/addAgent.php" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
             <div class="u-form-group u-form-name">
               <label for="name-ef64" class="u-form-control-hidden u-label">Name</label>
               <input type="text" placeholder="Nom" id="name-ef64" name="agentName" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
@@ -65,15 +65,17 @@
         </div>
       </div>
     </section>
-    <!--<section class="u-align-center u-clearfix u-section-2" id="carousel_eb50">
+    <section class="u-align-center u-clearfix u-section-2" id="carousel_eb50">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-text u-text-default u-text-1">MODIFICATION</h2>
         <div class="u-expanded-width u-form u-form-1">
-          <form action="../library/updateAgent.php" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
+          <form action="../library/AgentUpdater/updateAgent.php" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
             <div class="u-form-group u-form-select u-form-group-1">
               <label for="select-2a9c" class="u-form-control-hidden u-label"></label>
               <div class="u-form-select-wrapper">
-                  <?php $agent = selectAll(); $selectedAgent = optionList($agent); $_SESSION['agent'] = $selectedAgent?> 
+                  <?php $agent = selectAll();
+                    $selectedAgent = optionList($agent);
+                  ?>
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
               </div>
             </div>
@@ -95,30 +97,35 @@
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
             <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-            <div class="u-form-send-error u-form-send-message">#FormSendError</div>
+              <div class="u-form-send-error u-form-send-message" style="background-color:green">Agent modifié avec succés.</div>
             <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
       </div>
-    </section>-->
+    </section>
     <section class="u-align-center u-clearfix u-section-3" id="carousel_0a98">
       <div class="u-clearfix u-sheet u-sheet-1">
         <h2 class="u-text u-text-default u-text-1">SUPPRESSION D'UN AGENT</h2>
         <div class="u-expanded-width u-form u-form-1">
-          <form action="../library/deleteAgent.php" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
-            <div class="u-form-group u-form-group-3">
-              <label for="text-7d9a" class="u-form-control-hidden u-label"></label>
-              <input type="text" placeholder="Matricule" id="text-7d9a" name="agentMatricule" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="required">
-            </div>
-            <div class="u-form-group u-form-submit">
-              <a href="#" class="u-btn u-btn-submit u-button-style">SUPPRIMER<br>
-              </a>
-              <input type="submit" value="submit" class="u-form-control-hidden">
-            </div>
-            <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
-            <div class="u-form-send-error u-form-send-message" style="background-color:green">Agent supprimé avec succés.</div>
-            <input type="hidden" value="" name="recaptchaResponse">
-          </form>
+            <form action="../library/AgentUpdater/deleteAgent.php" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px;" source="custom">
+                <div class="u-form-group u-form-select u-form-group-1">
+                    <label for="select-679f" class="u-form-control-hidden u-label"></label>
+                    <div class="u-form-select-wrapper">
+                            <?php $agent = selectAll();
+                                $selectedAgent = optionListII($agent);
+                                ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+                    </div>
+                </div>
+                <div class="u-form-group u-form-submit">
+                    <a href="#" class="u-btn u-btn-submit u-button-style">SUPPRIMER<br>
+                    </a>
+                    <input type="submit" value="submit" class="u-form-control-hidden">
+                </div>
+                <div class="u-form-send-message u-form-send-success">#FormSendSuccess</div>
+                <div class="u-form-send-error u-form-send-message" style="background-color:green">Agent supprimé avec succés.</div>
+                <input type="hidden" value="" name="recaptchaResponse">
+            </form>
         </div>
       </div>
     </section>
